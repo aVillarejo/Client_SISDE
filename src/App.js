@@ -14,19 +14,45 @@ import "../scss/style.scss";
 // Temp fix for reactstrap
 import "../scss/core/_dropdown-menu-right.scss";
 
+//Apollo Client
+import {ApolloProvider} from 'react-apollo';
+import ApolloClient ,{ InMemoryCache }from 'apollo-boost';
+
 // Containers
 import Full from "./containers/Full/";
 
+// Views
+import Login from './views/Pages/Login/'
+import Register from './views/Pages/Register/'
+import Page404 from './views/Pages/Page404/'
+import Page500 from './views/Pages/Page500/'
 
+//Client for Apollo Server
+const client = new ApolloClient ({
+  uri: "http://192.168.1.74:9000/graphql",
+  cache: new InMemoryCache({
+    addTypename: false
+  }),
+  onError: ({networkError,graphqlErrors})=>{
+    console.log("GraphQL Errors: ", graphqlErrors);
+    console.log("Network Errors: ",networkError);
+  }
+})
 
-export default class APP extends Component {
+export default class App extends Component {
   render() {
     return (
-      <HashRouter>
-        <Switch>
-          <Route path="/" name="Home" component={Full} />
-        </Switch>
-      </HashRouter>
-    );
+      <ApolloProvider client={client}>
+        <HashRouter>
+          <Switch>
+            <Route exact path="/login" name="Login Page" component={Login}/>
+            <Route exact path="/register" name="Register Page" component={Register}/>
+            <Route exact path="/404" name="Page 404" component={Page404}/>
+            <Route exact path="/500" name="Page 500" component={Page500}/>
+            <Route path="/" name="Home" component={Full}/>
+          </Switch>
+        </HashRouter>
+      </ApolloProvider>
+    )
   }
 }

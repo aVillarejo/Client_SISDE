@@ -6,4 +6,5 @@
   color: $footer-color;
   background: $footer-bg;
   @include borders($footer-borders);
+  justify-content: flex-end;
 }
