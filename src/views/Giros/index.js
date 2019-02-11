@@ -3,13 +3,13 @@ import { Card, CardBody, Col, Row } from "reactstrap";
 import { Query, Mutation } from "react-apollo";
 import { Link } from "react-router-dom";
 
-import { USUARIOS_QUERY } from "../../graphql/queries";
+import { GIROS_QUERY } from "../../graphql/queries";
 
-import Tabla from "./Usuarios_tabla";
-import Toolbar from "./Usuarios_toolbar";
-import Paginador from "./Usuarios_paginador";
+import Tabla from "./tabla";
+import Toolbar from "./toolbar";
+import Paginador from "./paginador";
 
-class Usuarios extends Component {
+class Giros extends Component {
   constructor(props) {
     super(props);
 
@@ -42,7 +42,7 @@ class Usuarios extends Component {
   render() {
     return (
       <Query
-        query={USUARIOS_QUERY}
+        query={GIROS_QUERY}
         pollInterval={500}
         variables={{ limite: this.state.filter.value, offset: 0 }}
       >
@@ -52,7 +52,7 @@ class Usuarios extends Component {
           console.log(data);
 
           const { list, total } = data;
-          const totalUsuarios = Number(total);
+          const totalGiros = Number(total);
 
           return (
             <div className="animated fadeIn">
@@ -61,7 +61,7 @@ class Usuarios extends Component {
                   <Card>
                     <CardBody>
                       <Toolbar
-                        total={totalUsuarios}
+                        total={totalGiros}
                         toogle={this.toggle}
                         onRadioBtnClick={this.onRadioBtnClick}
                         active={this.state.filter}
@@ -80,4 +80,4 @@ class Usuarios extends Component {
   }
 }
 
-export default Usuarios;
+export default Giros;

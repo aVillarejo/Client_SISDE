@@ -7,8 +7,10 @@ import Breadcrumb from "../../components/Breadcrumb/";
 import Aside from "../../components/Aside/";
 import Footer from "../../components/Footer/";
 
+//Views
 import Dashboard from "../../views/Dashboard/";
 import Usuarios from "../../views/Usuarios/";
+import Giros from "../../views/Giros/";
 
 class Full extends Component {
   render() {
@@ -21,17 +23,9 @@ class Full extends Component {
             <Breadcrumb />
             <Container fluid>
               <Switch>
-                <Route
-                  path="/dashboard"
-                  name="Dashboard"
-                  component={Dashboard}
-                />
-                <Route
-                  path="/usuarios"
-                  exact
-                  name="Usuarios"
-                  component={Usuarios}
-                />
+                <Route path="/dashboard" name="Dashboard" component={Dashboard}/>
+                <Route path="/usuarios" exact name="Usuarios" component={Usuarios}/>
+                <Route path="/giros" exact name="Giros" component={Giros}/>
                 {/* <Route path="/users/:id" name="User Profile" component={User}/> */}
                 <Redirect from="/" to="/dashboard" />
               </Switch>

@@ -26,7 +26,7 @@ export default {
     },
     {
       name: "Giros",
-      url: "/grios",
+      url: "/giros",
       icon: "icon-people"
     },
     {

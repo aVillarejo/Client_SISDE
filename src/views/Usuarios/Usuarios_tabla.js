@@ -52,7 +52,7 @@ const TablaUsuarios = props => {
       <Table striped hover style={{ height: 300, marginTop: 40 }} xs="12">
         <thead>
           <tr>
-            <th className="d-flex d-none d-md-table-cell text-center">Nombre</th>
+            <th className="d-none d-md-table-cell text-center">Nombre</th>
             <th>Usuario</th>
             <th className="d-none d-md-table-cell">Contraseña</th>
             <th className="d-none d-md-table-cell">Tipo</th>
@@ -61,7 +61,7 @@ const TablaUsuarios = props => {
           </tr>
         </thead>
         <tbody>
-          {props.userList.map((user, index) => (
+          {props.source.map((user, index) => (
             <UserRow key={index} user={user} />
           ))}
         </tbody>

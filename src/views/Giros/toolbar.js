@@ -13,7 +13,7 @@ const Toolbar = props => {
   return (
     <Row>
       <Col sm="3">
-        <CardTitle className="mb-0">Listado de Usuarios</CardTitle>
+        <CardTitle className="mb-0">Listado de Giros</CardTitle>
         <div className="small text-muted">Total: {total} </div>
       </Col>
       <Col sm="9" className="d-none d-sm-inline-block">
